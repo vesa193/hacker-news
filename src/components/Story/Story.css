@@ -1,0 +1,14 @@
+.story {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: dense;
+    list-style-type: none;
+}
+
+.story__desc {
+    color: gray;
+}
+
+.story__desc span {
+    color: black;
+}
