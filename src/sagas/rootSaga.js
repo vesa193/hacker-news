@@ -1,7 +1,8 @@
 import { all, fork } from 'redux-saga/effects';
-import { fetchInitialStoriesFlow } from './getStoriesFlow';
+import { getInitialStoriesFlow } from './getInitialStoriesFlow';
+import { getStoriesPerPageFlow } from './getStoriesPerPageFlow';
 
 export default function* rootSaga() {
-    yield all([yield fork(fetchInitialStoriesFlow)]);
+    yield all([yield fork(getInitialStoriesFlow), yield fork(getStoriesPerPageFlow)]);
     // code after all-effect
 }

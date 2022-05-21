@@ -4,16 +4,20 @@ export const storiesSlice = createSlice({
     name: 'stories',
     initialState: {
         storyIds: {},
-        stories: [],
+        stories: {},
         errorMessage: '',
     },
     reducers: {
-        getStoriesRequest: () => {},
+        getInitialStoriesRequest: () => {},
+        getStoriesPerPageRequest: () => {},
         setStoryIdsSuccess: (state, action) => {
             state.storyIds = action.payload;
         },
         setStoriesSuccess: (state, action) => {
-            state.stories = action.payload;
+            const { hashId } = action.payload;
+
+            if (state.stories[hashId]) return;
+            state.stories = { ...state.stories, [hashId]: action.payload[hashId] };
         },
         setStoriesFailed: (state, action) => {
             state.errorMessage = action.payload.message;
@@ -22,6 +26,12 @@ export const storiesSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { getStoriesRequest, setStoryIdsSuccess, setStoriesSuccess, setStoriesFailed } = storiesSlice.actions;
+export const {
+    getInitialStoriesRequest,
+    getStoriesPerPageRequest,
+    setStoryIdsSuccess,
+    setStoriesSuccess,
+    setStoriesFailed,
+} = storiesSlice.actions;
 
 export default storiesSlice.reducer;
