@@ -14,6 +14,9 @@ export default function Paginator({ page, handlePaginator, isDisableButton }) {
                 label="PREV"
                 handleButton={() => handlePaginator('prev', (pageNumber -= 1))}
             />
+            <p>
+                Page <span>{pageNumber}</span> of <span>{limit}</span>
+            </p>
             <Button
                 isDisabled={pageNumber === limit || isDisableButton}
                 label="NEXT"

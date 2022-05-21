@@ -9,6 +9,16 @@
     padding: 16px 0;
 }
 
-.footer div button:first-child {
-    margin-right: 1rem;
+.footer div {
+    display: flex;
+    align-items: center;
+}
+
+.footer div p {
+    color: gray;
+    margin: 0 1rem;
+}
+
+.footer div span {
+    color: black;
 }
