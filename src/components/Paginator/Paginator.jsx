@@ -1,37 +1,36 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import Button from '../Button/Button';
 
-export default function Paginator({ page, handlePaginator }) {
+export default function Paginator({ page, handlePaginator, isDisableButton }) {
     const { storyIds } = useSelector((state) => state.stories);
     let pageNumber = page;
     const limit = storyIds.length;
 
     return (
         <div>
-            <button
-                type="button"
-                disabled={pageNumber === 1}
-                onClick={() => handlePaginator('prev', (pageNumber -= 1))}
-            >
-                PREV
-            </button>
-            <button
-                type="button"
-                disabled={pageNumber === limit}
-                onClick={() => handlePaginator('next', (pageNumber += 1))}
-            >
-                NEXT
-            </button>
+            <Button
+                isDisabled={pageNumber === 1 || isDisableButton}
+                label="PREV"
+                handleButton={() => handlePaginator('prev', (pageNumber -= 1))}
+            />
+            <Button
+                isDisabled={pageNumber === limit || isDisableButton}
+                label="NEXT"
+                handleButton={() => handlePaginator('next', (pageNumber += 1))}
+            />
         </div>
     );
 }
 
 Paginator.defaultProps = {
+    isDisableButton: false,
     page: 1,
     handlePaginator: () => null,
 };
 
 Paginator.propTypes = {
+    isDisableButton: PropTypes.bool,
     page: PropTypes.number,
     handlePaginator: PropTypes.func,
 };

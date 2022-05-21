@@ -1,0 +1,14 @@
+.story-list {
+    padding: 0 2rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    padding: 16px 0;
+}
+
+.footer div button:first-child {
+    margin-right: 1rem;
+}

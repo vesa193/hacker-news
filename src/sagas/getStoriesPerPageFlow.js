@@ -8,10 +8,16 @@ export function* getStoriesPerPageFlow() {
     while (true) {
         const { payload } = yield take(getStoriesPerPageRequest.type);
         const { pageNumber } = payload;
-        const { storyIds } = yield select((state) => state.stories);
+        const { storyIds, stories } = yield select((state) => state.stories);
+        const isStoryExist = stories[pageNumber]?.length;
 
         try {
-            yield call(fetchStoryData, storyIds[pageNumber - 1], `${pageNumber}`, api, setStoriesSuccess);
+            if (isStoryExist) {
+                yield put(setStoriesSuccess({ hashId: `${pageNumber}` }));
+            }
+            if (!isStoryExist) {
+                yield call(fetchStoryData, storyIds[pageNumber - 1], `${pageNumber}`, api, setStoriesSuccess);
+            }
         } catch (e) {
             yield put(setStoriesFailed(e.message));
         }
