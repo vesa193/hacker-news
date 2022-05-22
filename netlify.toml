@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  publish="https://github.com/vesa193/hacker-news/build"
-  base = "https://github.com/vesa193/hacker-news"
+  publish="/build"
+  base = "/hacker-news"
 
 [[redirects]]
   from = "/*"
