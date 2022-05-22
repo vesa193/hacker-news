@@ -1,10 +1,9 @@
-[[redirects]]
-    from = "/hacker-news"
-    to = "/index.html"
-    status = 200
+[build]
+  command = "npm run build"
+  publish="https://github.com/vesa193/hacker-news/build"
+  base = "https://github.com/vesa193/hacker-news"
 
-[context.production.environment]
-    TOML_ENV_VAR = "From netlify.toml"
-    CI = "false"
-    REACT_APP_CI = "false"
-    REACT_APP_API_URL=https://hacker-news.firebaseio.com/v0
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
