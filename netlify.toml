@@ -1,0 +1,10 @@
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+[context.production.environment]
+    TOML_ENV_VAR = "From netlify.toml"
+    CI = "false"
+    REACT_APP_CI = "false"
+    REACT_APP_API_URL=https://hacker-news.firebaseio.com/v0
