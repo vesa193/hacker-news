@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/stories"
+  status = 200
