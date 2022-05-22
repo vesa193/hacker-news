@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '../../components/Header/Header';
@@ -17,7 +17,6 @@ export default function Stories() {
     const { search } = useLocation();
     const pageParam = (search && +search.split('=')[1]) || 1;
     const { stories, storyIds, isLoading } = useSelector((state) => state.stories);
-    const [refreshData, setRefreshData] = useState(false);
 
     useEffect(() => {
         if (!storyIds?.length) {
@@ -36,14 +35,13 @@ export default function Stories() {
         dispatch(getStoriesPerPageRequest({ pageNumber }));
     };
 
-    const handleRefreshData = (isRefresh) => {
-        setRefreshData(isRefresh);
+    const handleRefreshData = () => {
         dispatch(refreshStoriesListRequest({ pageNumber: pageParam }));
     };
 
     return (
         <div>
-            <Header isDisableButton={isLoading} refreshData={refreshData} handleRefreshData={handleRefreshData} />
+            <Header isDisableButton={isLoading} handleRefreshData={handleRefreshData} />
             <ul className="story-list">
                 {!isLoading &&
                     stories[pageParam]?.map((story, index) => (

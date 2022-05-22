@@ -2,11 +2,11 @@
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    background-color: #212121;
+    background-color: var(--black-text-color);
 }
 
 .header nav {
-    color: white;
+    color: var(--white-text-color);
     display: flex;
     align-items: center;
     justify-content: space-between;

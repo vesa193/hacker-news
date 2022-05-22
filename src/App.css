@@ -1,4 +1,15 @@
+:root {
+    --background-color: #cccccc;
+    --grey-text-color: #808080;
+    --black-text-color: #212121;
+    --white-text-color: #ffffff;
+}
+
 * {
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
 }
